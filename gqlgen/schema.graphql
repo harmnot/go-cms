@@ -1,0 +1,44 @@
+type Query {
+    me: Person
+    findOneContent(contentId: ID!): Content
+    findAllContent: [Content!]
+    findContentBy(category: String, type: String): [Content!]
+}
+
+type Mutation {
+    createPerson(name: String!, email: String!, password: String!, company: String!): Person
+    createContent(title: String, text: String!, category: String!, type: String!, limit: Int, note: String): Content
+    editContent(title: String, text: String, category: String, type: String, limit: Int, note: String): Content
+}
+
+type Person {
+    id: ID!
+    email: String!
+    name: String
+    password: String
+    company: Company
+    createdAt: DateTime!
+}
+
+type Company {
+    id: ID!
+    name: String
+}
+
+type Content {
+    id: ID!
+    title: String
+    text: String
+    category: String
+    type: String!
+    limit: Int
+    note: String
+    createdBy: String
+    updatedBy: String
+    image: String
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    company: Company
+}
+
+scalar DateTime

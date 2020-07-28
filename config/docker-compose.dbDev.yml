@@ -1,0 +1,12 @@
+version: "3"
+services:
+  postgres:
+    container_name: go-postgres
+    restart: on-failure
+    image: postgres:10-alpine
+    ports:
+      - "7008:5432"
+    environment:
+      POSTGRES_USER: ${PG_USER_DEV}
+      POSTGRES_PASSWORD: ${PG_PASSWORD_DEV}
+      POSTGRES_DB: ${PG_DB_DEV}

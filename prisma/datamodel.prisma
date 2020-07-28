@@ -1,0 +1,30 @@
+type Person {
+  id: ID! @id
+  name: String!
+  email: String! @unique
+  password: String!
+  company: Company @relation(link: INLINE)  @db(name: "company_id")
+  createdAt: DateTime! @createdAt @db(name: "created_at")
+}
+
+type Company {
+  id: ID! @id
+  name: String! @unique
+}
+
+type Content {
+  id: ID! @id
+  title: String
+  text: String!
+  category: String!
+  type: String!
+  limit: Int
+  note: String
+  opt: String
+  createdBy: String
+  updatedBy: String
+  image: String
+  createdAt: DateTime! @createdAt @db(name: "created_at")
+  updatedAt: DateTime! @updatedAt @db(name: "updated_at")
+  company: Company @relation(link: INLINE) @db(name: "company_id")
+}

@@ -1,0 +1,25 @@
+version: "3"
+services:
+  prisma:
+    container_name: go-prisma
+    image: prismagraphql/prisma:1.34
+    restart: always
+    ports:
+      - "7007:7007"
+    environment:
+      PRISMA_CONFIG: |
+        port: 7007
+        # uncomment the next line and provide the env var PRISMA_MANAGEMENT_API_SECRET=my-secret to activate cluster security
+        # managementApiSecret: ${PRISMA_SECRET}
+        databases:
+          default:
+            connector: postgres
+            host: ${HOST_DB}
+            database: ${PG_DB_DEV}
+            schema: public
+            user:  ${PG_USER_DEV}
+            password: ${PG_PASSWORD_DEV}
+            ssl: false
+            rawAccess: true
+            port: '7008'
+            migrations: true%

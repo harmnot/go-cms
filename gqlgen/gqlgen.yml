@@ -1,0 +1,19 @@
+# Refer to https://gqlgen.com/config/
+# for detailed .gqlgen.yml documentation.
+
+schema:
+  - schema.graphql
+exec:
+  filename: ../generated/gqlgen/generated.go
+models:
+  Person:
+    model: cms/generated/prisma-client.Person
+  Company:
+    model: cms/generated/prisma-client.Company
+  Content:
+    model: cms/generated/prisma-client.Content
+resolver:
+  filename: ../resolver/resolver.go
+  type: Resolver
+omit_slice_element_pointers: true
+autobind: []
